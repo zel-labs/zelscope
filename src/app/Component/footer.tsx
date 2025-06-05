@@ -9,7 +9,7 @@ export default function FooterComponent() {
             <div className='w-full pl-10 border-b-[1px] border-[#666666] float-left pb-3'>
                 <Link href="https://x.com/ZelonisNetwork"><Image src="/img/x.png" height={20} width={20} alt='@ZelonisNetwork' className='float-left mr-3' /></Link>
                 <Link href="https://t.me/zelonisofficial"><Image src="/img/telegram.png" height={20} width={20} alt='@ZelonisOfficial' className='float-left mt-0.5' /></Link>
-                <span className='float-right text-[12px] mt-2'>© Zelscope 2025 | Built by Zel-labs</span>
+                <span className='float-right text-[12px] mt-2'><Link href="/terms" className='underline underline-offset-2'>Terms and Conditions</Link> © Zelscope 2025 | Built by Zel-labs</span>
             </div>
             <div className='mt-3 w-full float-left text-2xl' >
                 <Image src="/img/zel-round.png" alt="Zelonis Blockchain" height={47} width={47} className='float-left mr-4'/>
