@@ -24,4 +24,5 @@ body {
   color: var(--foreground);
   font-family:'Ridley Grotesk';
   background: #1a1a1a;
+  color:#fff;
 }
