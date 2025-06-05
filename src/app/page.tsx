@@ -85,7 +85,7 @@ export default function Home() {
           </div>
           <div className="w-full text-2xl font-medium col-end-2 mt-10">
             <div className="w-full">
-              Explore Zelonis Bloackhain
+              Explore Zelonis Blockhain
             </div>
             <div className="bg-black w-full rounded-lg pl-4 h-[40px] box-border relative mt-2">
               <input type="text" placeholder="Search transactions, blocks and wallets" className="text-[14px] w-[90%] outline-0 text-white" />
