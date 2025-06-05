@@ -4,6 +4,6 @@ Zelscope is without Database API based Explorer for Zelnois Blockchain. Zelscope
 ## Creating Issues
 For bug reports, feature requests, or other issues:
 
-Use GitHub Issues to report non-security bugs
-Include clear steps to reproduce, expected vs. actual behavior, and relevant screenshots
-For security vulnerabilities, especially those related to Zelonis Verify (Verified Builds), please email disclosures@zelonis.org
+- Use GitHub Issues to report non-security bugs
+- Include clear steps to reproduce, expected vs. actual behavior, and relevant screenshots
+- For security vulnerabilities, especially those related to Zelonis Verify (Verified Builds), please email disclosures@zelonis.org
