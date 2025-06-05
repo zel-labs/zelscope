@@ -1,4 +1,6 @@
+<p align="center">
 ![logo](https://github.com/user-attachments/assets/83a92df2-e144-4f2e-b912-923f4ed82f53)
+</p>
 ## Zelscope : Zelonis Blockchain Explorer 
 Zelscope is without Database API based Explorer for Zelnois Blockchain. Zelscope is a comprehensive data platform for the Zelonis blockchain, offering powerful tools to track, visualize, and interpret on-chain activity. From monitoring transactions and wallet activity to viewing block production, token performance, and overall network health, Zelscope gives users deep visibility into how the Zelonis ecosystem operates. Designed for accessibility and clarity, it serves developers, analysts, and everyday users who want to better understand and engage with the Zelonis network.
 
