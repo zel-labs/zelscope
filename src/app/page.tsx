@@ -27,7 +27,7 @@ export default function Home() {
    
   useEffect(() => {
      setInterval(()=>{
-      fetch('http://127.0.0.1:8545/currentStatus/') 
+      fetch('https://api.zellet.org/currentStatus/') 
       .then(res =>res.json())
       .then(json => {
         setSupply(json.totalSupply);
@@ -42,13 +42,13 @@ export default function Home() {
         
       })
       
-      fetch('http://127.0.0.1:8545/latestBlocks').then(res=>res.json())
+      fetch('https://api.zellet.org/latestBlocks').then(res=>res.json())
       .then(json => {
         
         setBlocks(json)
         
       })
-      fetch('http://127.0.0.1:8545/latestTx').then(res=>res.json())
+      fetch('https://api.zellet.org/latestTx').then(res=>res.json())
       .then(json =>{
         
         setTxs(json)
