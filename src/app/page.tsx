@@ -8,6 +8,11 @@ import Link from 'next/link';
 import FooterComponent from "./Component/footer";
 
 export default function Home() {
+     const [inputValue, setInputValue] = useState('');
+
+  const handleClick = () => {
+    console.log('Input value:', inputValue);
+  };
   const [supply, setSupply] = useState<any>(null);
   const [csupply, setCSupply] = useState<any>(null);
   const [nonsupply, setNonSupply] = useState<any>(null);
@@ -129,7 +134,7 @@ export default function Home() {
               Current Epoch <div className="float-right w-[100px] bg-[#555555] h-[8px] mt-2"></div>
             </div>
             <div className="text-[16px] font-medium">
-              {epoch_number} <span className="text-[#1c96e4] float-right">0.01%</span>
+              {Number(epoch_number).toLocaleString()} <span className="text-[#1c96e4] float-right">0.01%</span>
             </div>
             <div className="bg-[#1a1a1a] rounded-lg w-full h-[150px] mt-3 box-border p-4 pt-4">
               <div className="text-[14px] text-[#999999]">
@@ -152,7 +157,7 @@ export default function Home() {
               Network (Transaction) 
             </div>
             <div className="text-[16px] font-medium">
-              {totalTx}
+              {Number(totalTx).toLocaleString()}
             </div>
             <div className="bg-[#1a1a1a] rounded-lg w-full h-[150px] mt-3 box-border p-4 pt-4 grid grid-cols-2">
               
@@ -198,7 +203,7 @@ export default function Home() {
               Total Stake (Zel) 
           </div>
           <div className="text-[16px] font-medium">
-              {nonsupply}
+              {Number(nonsupply).toLocaleString()}
           </div>
           <div className="bg-[#1a1a1a] rounded-lg w-full h-[150px] mt-3 box-border p-4 pt-4">
               <div className="text-[14px] text-[#999999]">
