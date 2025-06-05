@@ -110,14 +110,14 @@ export default function Home() {
             </div>
             <div className="bg-[#1a1a1a] rounded-lg w-full h-[150px] mt-3 box-border p-4 pt-4">
               <div className="text-[14px] text-[#999999]">
-                Circlulating Supply
+                Circulating Supply
               </div>
               <div className="text-[14px] text-[#fff]">
                 {Number(csupply).toFixed(2)} (100%)
               </div>
               <div className="border-t-2 border-t-[#666] mt-4 mb-4"></div>
               <div className="text-[14px] text-[#999999]">
-                Non-circlulating Supply
+                Non-circulating Supply
               </div>
               <div className="text-[14px] text-[#fff]">
                 {Number(nonsupply).toFixed(2)} (0%)
