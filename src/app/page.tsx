@@ -118,14 +118,14 @@ export default function Home() {
                 Circulating Supply
               </div>
               <div className="text-[14px] text-[#fff]">
-                {Number(csupply).toFixed(2)} (100%)
+                {Number(csupply).toFixed(2)} ({calculatePercent(csupply,supply).toFixed(2)}%)
               </div>
               <div className="border-t-2 border-t-[#666] mt-4 mb-4"></div>
               <div className="text-[14px] text-[#999999]">
                 Non-circulating Supply
               </div>
               <div className="text-[14px] text-[#fff]">
-                {Number(nonsupply).toFixed(2)} (0%)
+                {Number(nonsupply).toFixed(2)} ({calculatePercent(nonsupply,supply).toFixed(2)}%)
               </div>
             </div>
         </div>
@@ -288,4 +288,10 @@ function filterAction(value){
     }
 
 
+}
+
+function calculatePercent(cVal,tVal)
+{
+    let p = (cVal*100)/tVal
+    return p
 }
