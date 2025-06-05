@@ -1,103 +1,286 @@
+'use client'
 import Image from "next/image";
+import './styles/style.css';
+
+import { useEffect,useState } from 'react'
+import { format } from 'timeago.js';
+import Link from 'next/link';
+import FooterComponent from "./Component/footer";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [supply, setSupply] = useState<any>(null);
+  const [csupply, setCSupply] = useState<any>(null);
+  const [nonsupply, setNonSupply] = useState<any>(null);
+  const [totalTx, setTotalTx] = useState<any>(null);
+  const [lastestBlockHeight, setLastestBlockHeight] = useState<any>(null);
+  const [epoch_number, setEpoch_number] = useState<any>(null);
+  const [epoch_start, setEpoch_start] = useState<any>(null);
+  const [epoch_end, setEpoch_end] = useState<any>(null);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+ const [blocks, setBlocks] = useState(null);
+ const [txs, setTxs] = useState(null);
+   
+  useEffect(() => {
+     setInterval(()=>{
+      fetch('http://127.0.0.1:8545/currentStatus/') 
+      .then(res =>res.json())
+      .then(json => {
+        setSupply(json.totalSupply);
+        setCSupply(json.totalCirculating);
+        setNonSupply(json.totalStaked	);
+        setTotalTx(json.totalTransactions);
+        setLastestBlockHeight(json.lastestBlockHeight);
+        setEpoch_number(json.epoch.epoch_number);
+        setEpoch_start(json.epoch.epoch_start);
+        setEpoch_end(json.epoch.epoch_end);
+        //alert(json.totalSupply)
+        
+      })
+      
+      fetch('http://127.0.0.1:8545/latestBlocks').then(res=>res.json())
+      .then(json => {
+        
+        setBlocks(json)
+        
+      })
+      fetch('http://127.0.0.1:8545/latestTx').then(res=>res.json())
+      .then(json =>{
+        
+        setTxs(json)
+      })
+     },1000)
+    
+      
+  }, [])
+  return (
+    <>
+    <div className="bg-[#1a1a1a] h-full pb-20">
+      <div className="bg-linear-to-r from-[#1ec7f6] to-[#4570c5] w-full h-[236px] pt-3 text-white">
+        <div className="m-auto max-w-[1450px] grid grid-cols-2">
+          <div className="w-full ">
+            <Link href="/"><Image src="/img/logo.png" width={165} height={45} alt="Zelscope" className="float-left" /></Link>
+            <div className="float-left bg-[rgba(255,255,255,0.3)] rounded-lg ml-5 h-[35px] pt-0.5 pl-2 mt-3 w-[250px]">
+              <Image src="/img/zel-white.png" width={26} height={26} alt="Zelonis Blockchain" className="float-left mr-2 mt-0.5" />
+              
+            </div>
+            
+          </div>
+          <div className=" mt-1">
+              <ul>
+                
+                <li className="float-left pr-5 pl-5 mt-2">
+                  Leaderboard  <span className="float-right text-[10px] bg-amber-600 pt-1 pb-1 pl-2 pr-2 border-amber-900 rounded-lg ml-2">Coming Soon</span>      
+                </li>
+                <li className="float-left pr-5 pl-5 mt-2">
+                  Blockchain          
+                </li>
+                <li className="float-left pr-5 pl-5 mt-2">
+                  Resources <span className="float-right text-[10px] bg-amber-600 pt-1 pb-1 pl-2 pr-2 border-amber-900 rounded-lg ml-2">Coming Soon</span>
+                </li>
+                <li className="float-left pr-5 pl-5">
+                  <Image src="/img/zel-black.png" width={34} height={37} alt="Zelonis Blockchain" />
+                </li>
+                
+              </ul>
+          </div>
+          <div className="w-full text-2xl font-medium col-end-2 mt-10">
+            <div className="w-full">
+              Explore Zelonis Bloackhain
+            </div>
+            <div className="bg-black w-full rounded-lg pl-4 h-[40px] box-border relative mt-2">
+              <input type="text" placeholder="Search transactions, blocks and wallets" className="text-[14px] w-[90%] outline-0 text-white" />
+              <Image src="/img/search.png" alt="Search" height={34} width={33} className="absolute right-2 top-[3px]"/>
+            </div>
+            <div className="w-full text-[14px] mt-3">
+              Sponsored: Reach Zelscope team to advertise on this space
+            </div>
+            
+          </div>
+          
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+      <div className="m-auto max-w-[1450px] grid grid-cols-4 ">
+        <div className="bg-[#282828] h-[40px] col-span-4 rounded-lg mt-3"></div>
+        <div className="bg-[#282828] h-[260px] rounded-lg mt-3 mr-2 p-4 ">
+            <div className="text-[14px] mb-2">
+              Zel Supply
+            </div>
+            <div className="text-[16px] font-medium">
+              {Number(supply).toFixed(2)}
+            </div>
+            <div className="bg-[#1a1a1a] rounded-lg w-full h-[150px] mt-3 box-border p-4 pt-4">
+              <div className="text-[14px] text-[#999999]">
+                Circlulating Supply
+              </div>
+              <div className="text-[14px] text-[#fff]">
+                {Number(csupply).toFixed(2)} (100%)
+              </div>
+              <div className="border-t-2 border-t-[#666] mt-4 mb-4"></div>
+              <div className="text-[14px] text-[#999999]">
+                Non-circlulating Supply
+              </div>
+              <div className="text-[14px] text-[#fff]">
+                {Number(nonsupply).toFixed(2)} (0%)
+              </div>
+            </div>
+        </div>
+        <div className="bg-[#282828] h-[260px] rounded-lg mt-3 mr-2 ml-2 p-4 ">
+            <div className="text-[14px] mb-2">
+              Current Epoch <div className="float-right w-[100px] bg-[#555555] h-[8px] mt-2"></div>
+            </div>
+            <div className="text-[16px] font-medium">
+              {epoch_number} <span className="text-[#1c96e4] float-right">0.01%</span>
+            </div>
+            <div className="bg-[#1a1a1a] rounded-lg w-full h-[150px] mt-3 box-border p-4 pt-4">
+              <div className="text-[14px] text-[#999999]">
+                Slot Range
+              </div>
+              <div className="text-[14px] text-[#fff]">
+                {epoch_start} - {epoch_end}
+              </div>
+              <div className="border-t-2 border-t-[#666] mt-4 mb-4"></div>
+              <div className="text-[14px] text-[#999999]">
+                Time Remaining
+              </div>
+              <div className="text-[14px] text-[#fff]">
+                0d 23h 59m 59s
+              </div>
+            </div>
+        </div>
+        <div className="bg-[#282828] h-[260px] rounded-lg mt-3 mr-2 ml-2 p-4 ">
+            <div className="text-[14px] mb-2">
+              Network (Transaction) 
+            </div>
+            <div className="text-[16px] font-medium">
+              {totalTx}
+            </div>
+            <div className="bg-[#1a1a1a] rounded-lg w-full h-[150px] mt-3 box-border p-4 pt-4 grid grid-cols-2">
+              
+              <div>
+                <div className="text-[14px] text-[#999999]">
+                  Block Height
+                </div>
+                <div className="text-[14px] text-[#fff]">
+                  {lastestBlockHeight}
+                </div>
+              </div>
+              <div className="col-span-1">
+                <div className="text-[14px] text-[#999999]">
+                  Slot Height
+                </div>
+                <div className="text-[14px] text-[#fff]">
+                  {epoch_number}
+                </div>
+              </div>
+
+
+              <div className="border-t-2 border-t-[#666] mt-4 mb-4 col-span-2"></div>
+              <div className="col-span-1">
+                <div className="text-[14px] text-[#2c7fd5]">
+                  TPS
+                </div>
+                <div className="text-[14px] text-[#fff]">
+                  0
+                </div>
+              </div>
+              <div className="col-span-1">
+                <div className="text-[14px] text-[#2c7fd5]">
+                  True TPS
+                </div>
+                <div className="text-[14px] text-[#fff]">
+                  0
+                </div>
+              </div>
+            </div>
+        </div>
+        <div className="bg-[#282828] h-[260px] rounded-lg mt-3 ml-2 p-4 ">
+          <div className="text-[14px] mb-2">
+              Total Stake (Zel) 
+          </div>
+          <div className="text-[16px] font-medium">
+              {nonsupply}
+          </div>
+          <div className="bg-[#1a1a1a] rounded-lg w-full h-[150px] mt-3 box-border p-4 pt-4">
+              <div className="text-[14px] text-[#999999]">
+                Current Stake
+              </div>
+              <div className="text-[14px] text-[#fff]">
+                {Number(nonsupply).toFixed(2)} ZEL (0%)
+              </div>
+              <div className="border-t-2 border-t-[#666] mt-4 mb-4"></div>
+              <div className="text-[14px] text-[#999999]">
+                Delinquent Stake
+              </div>
+              <div className="text-[14px] text-[#fff]">
+                0 ZEL (0%)
+              </div>
+            </div>
+        </div>
+        <div className="bg-[#282828] col-span-2 min-h-90 mt-3 rounded-lg mr-2 pt-4 text-[12px] pb-10">
+          <div className="text-[14px] pl-3 mb-3">
+            Latest Blocks
+          </div>
+          <div className="grid grid-cols-5">
+            <div className="col-span-2 ml-3">Block Hash</div>
+            <div>Slot</div>
+            <div>Time</div>
+            <div>Leader</div>
+          </div>
+          <div className="border-t-1 border-t-[#666] mt-4 "></div>
+          {blocks?.blocks?.map((val, index) => (
+            
+            <div className="grid grid-cols-5 border-b-1 border-b-[#666] pt-4 pb-4" key={index}>
+              <div className="text-[#1e8ee0] col-span-2 overflow-ellipsis overflow-hidden ml-3 mr-15"><Link href={"block/"+val.Header.Blockhash}>{val.Header.Blockhash}</Link></div>
+              <div className="text-[#1e8ee0]"><Link href={"/blockById/"+val.Header.Blockheight}>{val.Header.Blockheight}</Link></div>
+              <div>{format(val.Header.Blocktime)}</div>
+              <div className="text-[#1e8ee0] overflow-ellipsis overflow-hidden mr-3"><Link href={"/account/"+val.ValidatorInfo.Addr}>{val.ValidatorInfo.Addr}</Link></div>
+            </div>
+            
+          ))}
+          
+          
+        </div>
+        <div className="bg-[#282828] col-span-2 min-h-90 mt-3 rounded-lg  pt-4 text-[12px] ml-2 pb-10">
+          <div className="text-[14px] pl-3 mb-3">
+            Latest Transaction
+          </div>
+          <div className="grid grid-cols-5">
+            <div className="col-span-2 ml-3">Signature</div>
+            <div>Time</div>
+            <div>Block</div>
+            <div>Instructions</div>
+          </div>
+          <div className="border-t-1 border-t-[#666] mt-4 "></div>
+          {txs?.tx_list?.map((val,id)=>(
+            <div className="grid grid-cols-5 border-b-1 border-b-[#666] pt-4 pb-4" key={id}>
+                <div className="text-[#1e8ee0] col-span-2 overflow-ellipsis overflow-hidden ml-3 mr-15"><Link href={"/tx/"+val.txhash}>{val.sighash}</Link></div>
+                <div>{format(val.timstamp)}</div>
+                <div className="text-[#1e8ee0]"><Link href={"/blockById/"+val.blockheight}>{val.blockheight}</Link></div>
+                <div className="text-[#1e8ee0]"><span className="rounded-lg p-3 pt-1 pb-1 border-[#1e8ee0] border-[1px]">{filterAction(val.txtype)}</span></div>
+            </div>
+          ))}
+          
+        </div>
+      </div>
     </div>
+    <FooterComponent />
+    </>
   );
+}
+
+function filterAction(value){
+    
+    if (value == 0 ||value == 1){
+        return "Transfer"
+    }else if (value==20 ){
+        return "Staking"
+    }else if (value==21 ){
+        return "Staking Release"
+    }else if (value==30 ){
+        return "Reward"
+    }else if (value==20 ){
+        return "Reward Release"
+    }
+
+
 }

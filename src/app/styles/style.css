@@ -1,0 +1,162 @@
+@font-face {
+    font-family: 'Ridley Grotesk';
+    src: url('RidleyGrotesk-BlackItalic.woff2') format('woff2'),
+        url('RidleyGrotesk-BlackItalic.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ridley Grotesk';
+    src: url('RidleyGrotesk-ExtraBoldItalic.woff2') format('woff2'),
+        url('RidleyGrotesk-ExtraBoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ridley Grotesk';
+    src: url('RidleyGrotesk-BoldItalic.woff2') format('woff2'),
+        url('RidleyGrotesk-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ridley Grotesk';
+    src: url('RidleyGrotesk-Black.woff2') format('woff2'),
+        url('RidleyGrotesk-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ridley Grotesk';
+    src: url('RidleyGrotesk-Bold.woff2') format('woff2'),
+        url('RidleyGrotesk-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ridley Grotesk';
+    src: url('RidleyGrotesk-MediumItalic.woff2') format('woff2'),
+        url('RidleyGrotesk-MediumItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ridley Grotesk';
+    src: url('RidleyGrotesk-Light.woff2') format('woff2'),
+        url('RidleyGrotesk-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ridley Grotesk';
+    src: url('RidleyGrotesk-Italic.woff2') format('woff2'),
+        url('RidleyGrotesk-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ridley Grotesk';
+    src: url('RidleyGrotesk-LightItalic.woff2') format('woff2'),
+        url('RidleyGrotesk-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ridley Grotesk';
+    src: url('RidleyGrotesk-ExtraBold.woff2') format('woff2'),
+        url('RidleyGrotesk-ExtraBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ridley Grotesk';
+    src: url('RidleyGrotesk-Medium.woff2') format('woff2'),
+        url('RidleyGrotesk-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ridley Grotesk';
+    src: url('RidleyGrotesk-SemiBold.woff2') format('woff2'),
+        url('RidleyGrotesk-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ridley Grotesk';
+    src: url('RidleyGrotesk-SemiBoldItalic.woff2') format('woff2'),
+        url('RidleyGrotesk-SemiBoldItalic.woff') format('woff');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ridley Grotesk';
+    src: url('RidleyGrotesk-UltraLight.woff2') format('woff2'),
+        url('RidleyGrotesk-UltraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ridley Grotesk';
+    src: url('RidleyGrotesk-Regular.woff2') format('woff2'),
+        url('RidleyGrotesk-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ridley Grotesk';
+    src: url('RidleyGrotesk-ThinItalic.woff2') format('woff2'),
+        url('RidleyGrotesk-ThinItalic.woff') format('woff');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ridley Grotesk';
+    src: url('RidleyGrotesk-Thin.woff2') format('woff2'),
+        url('RidleyGrotesk-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ridley Grotesk UltraLight It';
+    src: url('RidleyGrotesk-UltraLightItalic.woff2') format('woff2'),
+        url('RidleyGrotesk-UltraLightItalic.woff') format('woff');
+    font-weight: 200;
+    font-style: italic;
+    font-display: swap;
+}
+
