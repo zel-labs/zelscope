@@ -26,17 +26,8 @@ export default function Home() {
  const [txs, setTxs] = useState(null);
    
   useEffect(() => {
-     
-      fetchStatus
-      fetchBlocks
-      
-      fetchTxs
-    
-     
-      
-  }, [])
-  function fetchStatus(){
-    fetch('https://api.zellet.org/currentStatus/') 
+     setInterval(()=>{
+      fetch('https://api.zellet.org/currentStatus/') 
       .then(res =>res.json())
       .then(json => {
         setSupply(json.totalSupply);
@@ -49,23 +40,23 @@ export default function Home() {
         setEpoch_end(json.epoch.epoch_end);
         //alert(json.totalSupply)
         
-      }).then(fetchStatus)
-  }
-  function fetchBlocks(){
-    fetch('https://api.zellet.org/latestBlocks').then(res=>res.json())
+      })
+      
+      fetch('https://api.zellet.org/latestBlocks').then(res=>res.json())
       .then(json => {
         
         setBlocks(json)
         
-      }).then(fetchBlocks)
-  }
-  function fetchTxs(){
-    fetch('https://api.zellet.org/latestTx').then(res=>res.json())
+      })
+      fetch('https://api.zellet.org/latestTx').then(res=>res.json())
       .then(json =>{
         
         setTxs(json)
-      }).then(fetchTxs)
-  }
+      })
+     },1000)
+    
+      
+  }, [])
   return (
     <>
     <div className="bg-[#1a1a1a] h-full pb-20">
