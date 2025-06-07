@@ -34,11 +34,11 @@ export default async function AccountPage({ params }) {
                     <div className='font-semibold'>Overview</div>
                     <div className='grid grid-cols-2 mt-3 gap-y-4 font-light tracking-widest text-[14px]'>
                         <div className=' col-start-1 col-end-1 text-[#999]'>Zel Balance</div>
-                        <div >{formatNumber(account.balance)}</div>
+                        <div >{formatNumber(account.balance,3)}</div>
                         <div className='font-light col-start-1 col-end-1 text-[#999]'>Stake</div>
-                        <div >{formatNumber(account.stake)}</div>
+                        <div >{formatNumber(account.stake,3)}</div>
                         <div className='font-light col-start-1 col-end-1 text-[#999]'>Reward</div>
-                        <div >{formatNumber(account.reward)}</div>
+                        <div >{formatNumber(account.reward,3)}</div>
                     </div>
                     
                 </div>
@@ -46,22 +46,22 @@ export default async function AccountPage({ params }) {
                     <div className='font-semibold'>Validator Info</div>
                     <div className='grid grid-cols-2 mt-3 gap-y-4 font-light tracking-widest text-[14px]'>
                         <div className=' col-start-1 col-end-1 text-[#999]'>Activating</div>
-                        <div >{formatNumber(account.activating_stake)}</div>
+                        <div >{formatNumber(account.activating_stake,3)}</div>
                         <div className='font-light col-start-1 col-end-1 text-[#999]'>Deactivating</div>
-                        <div >{formatNumber(account.deactivating_stake)}</div>
+                        <div >{formatNumber(account.deactivating_stake,3)}</div>
                         <div className='font-light col-start-1 col-end-1 text-[#999]'>Pending Active</div>
-                        <div >{formatNumber(account.pending_activation)}</div>
+                        <div >{formatNumber(account.pending_activation,3)}</div>
                         <div className='font-light col-start-1 col-end-1 text-[#999]'>Pending Deactive</div>
-                        <div >{formatNumber(account.pending_activation)}</div>
+                        <div >{formatNumber(account.pending_activation,3)}</div>
                     </div>
                 </div>
                 <div className='bg-[#282828] h-[222px] rounded-lg ml-2 p-4'>
                     <div className='font-semibold'>Stake Info</div>
                     <div className='grid grid-cols-3 mt-3 gap-y-4 font-light tracking-widest text-[14px]'>
                         <div className=' col-start-1 col-end-1 text-[#999]'>Warmup</div>
-                        <div className='col-span-2'>{formatNumber(account.activating_stake)}</div>
+                        <div className='col-span-2'>{formatNumber(account.activating_stake,3)}</div>
                         <div className='font-light col-start-1 col-end-1 text-[#999]'>Cooldown</div>
-                        <div className='col-span-2'>{formatNumber(account.deactivating_stake)}</div>
+                        <div className='col-span-2'>{formatNumber(account.deactivating_stake,3)}</div>
                         
                     </div>
                 </div>
@@ -85,7 +85,7 @@ export default async function AccountPage({ params }) {
                         <div className='text-ellipsis overflow-hidden pr-20'><Link className="text-[#1e8de0]" href={"/account/"+tx.inpoint.sender}>{tx.inpoint.sender}</Link></div>
                         <div className='text-ellipsis overflow-hidden pr-20'><Link className="text-[#1e8de0]" href={"/account/"+tx?.outpoint?.[0]?.receiver}>{tx?.outpoint?.[0]?.receiver}</Link></div>
                         {isSentOrRecived(tx,slug)}
-                        <div>{formatNumber(tx.fee)}</div>
+                        <div>{formatNumber(tx.fee,7)}</div>
                     </div>
                 ))}
             </div>
@@ -98,11 +98,11 @@ export default async function AccountPage({ params }) {
 function isSentOrRecived(tx,slug){
     if (tx.inpoint.sender == slug){
         return (
-            <div className='text-red-500'>- {formatNumber(tx.inpoint.amount)}</div>
+            <div className='text-red-500'>- {formatNumber(tx.inpoint.amount,3)}</div>
         )
     }else{
         return (
-            <div className='text-green-700'>+ {formatNumber(tx.inpoint.amount)}</div>
+            <div className='text-green-700'>+ {formatNumber(tx.inpoint.amount,3)}</div>
         )
     }
 }
@@ -124,11 +124,11 @@ function filterAction(value){
 
 }
 
-function formatNumber(value) {
-  const num = Number(value);
-  if (isNaN(num)) return '0.00';
 
-  return num
-    .toFixed(2) // ensures two decimals
-    .replace(/\B(?=(\d{3})+(?!\d))/g, ","); // adds commas
+
+function formatNumber(number,digits) {
+  return new Intl.NumberFormat('en-US', {
+    minimumFractionDigits: digits,
+    maximumFractionDigits: digits,
+  }).format(number);
 }
