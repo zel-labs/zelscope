@@ -8,9 +8,9 @@ export default async function AccountPage({ params }) {
     
     const slug = params.slug;
     //get account balance
-    const res = await fetch('https://api.zellet.org/tx/'+slug, { cache: 'no-store' });
-    const tx = await res.json();
-    
+    const res = await fetch('http://localhost:4000/api/tx/'+slug, { cache: 'no-store' });
+    let data = await res.json();
+    const tx = data.data
     
     return (
         <>

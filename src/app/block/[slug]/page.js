@@ -7,8 +7,12 @@ export default async function AccountPage({ params }) {
     
     const slug = params.slug;
     //get account balance
-    const res = await fetch('https://api.zellet.org/blockByHash/'+slug, { cache: 'no-store' });
-    const block = await res.json();
+    
+
+    const res = await fetch('http://localhost:4000/api/blockByHash/'+slug, { cache: 'no-store' });
+    const data = await res.json();
+    const block = data.data
+
     let EpochNumber = 0
     let Reward = 0
     if (block.Header.Blockheight < 259200) {
