@@ -27,31 +27,32 @@ export default function Home() {
    
   useEffect(() => {
      setInterval(()=>{
-      fetch('https://api.zellet.org/currentStatus/') 
+      fetch('/api/currentstatus/') 
       .then(res =>res.json())
       .then(json => {
-        setSupply(json.totalSupply);
-        setCSupply(json.totalCirculating);
-        setNonSupply(json.totalStaked	);
-        setTotalTx(json.totalTransactions);
-        setLastestBlockHeight(json.lastestBlockHeight);
-        setEpoch_number(json.epoch.epoch_number);
-        setEpoch_start(json.epoch.epoch_start);
-        setEpoch_end(json.epoch.epoch_end);
+        
+        setSupply(json.data.totalSupply);
+        setCSupply(json.data.totalCirculating);
+        setNonSupply(json.data.totalStaked	);
+        setTotalTx(json.data.totalTransactions);
+        setLastestBlockHeight(json.data.lastestBlockHeight);
+        setEpoch_number(json.data.epoch.epoch_number);
+        setEpoch_start(json.data.epoch.epoch_start);
+        setEpoch_end(json.data.epoch.epoch_end);
         //alert(json.totalSupply)
         
       })
       
-      fetch('https://api.zellet.org/latestBlocks').then(res=>res.json())
+      fetch('/api/latestblocks').then(res=>res.json())
       .then(json => {
         
-        setBlocks(json)
+        setBlocks(json.data)
         
       })
-      fetch('https://api.zellet.org/latestTx').then(res=>res.json())
+      fetch('/api/latesttxs').then(res=>res.json())
       .then(json =>{
         
-        setTxs(json)
+        setTxs(json.data)
       })
      },1000)
     
