@@ -6,6 +6,7 @@ import { useEffect,useState } from 'react'
 import { format } from 'timeago.js';
 import Link from 'next/link';
 import FooterComponent from "./Component/footer";
+import SearchComponent from "./Component/search";
 
 export default function Home() {
      const [inputValue, setInputValue] = useState('');
@@ -93,13 +94,9 @@ export default function Home() {
             <div className="w-full">
               Explore Zelonis Blockchain
             </div>
-            <div className="bg-black w-full rounded-lg pl-4 h-[40px] box-border relative mt-2">
-              <input type="text" placeholder="Search transactions, blocks and wallets" className="text-[14px] w-[90%] outline-0 text-white" />
-              <Image src="/img/search.png" alt="Search" height={34} width={33} className="absolute right-2 top-[3px]"/>
-            </div>
-            <div className="w-full text-[14px] mt-3">
-              Sponsored: Reach Zelscope team to advertise on this space
-            </div>
+            <SearchComponent></SearchComponent>
+            
+            
             
           </div>
           

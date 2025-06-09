@@ -1,3 +1,4 @@
+
 import HeaderComponent from '../../Component/header'
 import SearchComponent from '../../Component/search'
 import { format } from 'timeago.js';
