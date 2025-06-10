@@ -15,11 +15,11 @@ export default async function AccountPage({ params }) {
 
     let EpochNumber = 0
     let Reward = 0
-    if (block.Header.Blockheight < 259200) {
+     if (block.Header.Blockheight < 259200) {
 		 EpochNumber = 1
 		
 	} else {
-		epochSize = uint64(math.Ceil(float64(ch) / (259200 * 3)))
+		let epochSize = Math.ceil((ch) / (259200 * 3))
 		EpochNumber = epochSize + 1
 		
 	}
