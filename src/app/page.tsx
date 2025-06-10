@@ -7,6 +7,7 @@ import { format } from 'timeago.js';
 import Link from 'next/link';
 import FooterComponent from "./Component/footer";
 import SearchComponent from "./Component/search";
+import { CSSProperties } from "react";
 
 export default function Home() {
      const [inputValue, setInputValue] = useState('');
@@ -19,9 +20,8 @@ export default function Home() {
   const [nonsupply, setNonSupply] = useState<any>(null);
   const [totalTx, setTotalTx] = useState<any>(null);
   const [lastestBlockHeight, setLastestBlockHeight] = useState<any>(null);
-  const [epoch_number, setEpoch_number] = useState<any>(null);
-  const [epoch_start, setEpoch_start] = useState<any>(null);
-  const [epoch_end, setEpoch_end] = useState<any>(null);
+  const [epoch, setEpoch] = useState<any>(null);
+  
 
  const [blocks, setBlocks] = useState(null);
  const [txs, setTxs] = useState(null);
@@ -37,13 +37,16 @@ export default function Home() {
         setNonSupply(json.data.totalStaked	);
         setTotalTx(json.data.totalTransactions);
         setLastestBlockHeight(json.data.lastestBlockHeight);
-        setEpoch_number(json.data.epoch.epoch_number);
-        setEpoch_start(json.data.epoch.epoch_start);
-        setEpoch_end(json.data.epoch.epoch_end);
+        setEpoch(json.data.epoch);
+       
         //alert(json.totalSupply)
         
       })
+      const el = document.getElementById('epochsize')
+    if (el) {
+      el.style.width = "10px"
       
+    }
       fetch('/api/latestblocks').then(res=>res.json())
       .then(json => {
         
@@ -56,8 +59,7 @@ export default function Home() {
         setTxs(json.data)
       })
      },1000)
-    
-      
+     
   }, [])
   return (
     <>
@@ -129,24 +131,27 @@ export default function Home() {
         </div>
         <div className="bg-[#282828] h-[260px] rounded-lg mt-3 mr-2 ml-2 p-4 ">
             <div className="text-[14px] mb-2">
-              Current Epoch <div className="float-right w-[100px] bg-[#555555] h-[8px] mt-2"></div>
+              Current Epoch 
+              <div className="float-right w-[100px] bg-[#555555] h-[8px] mt-2">
+                <span className=" bg-[#1c96e4] h-full float-left" style={{ width: `${Number(lastestBlockHeight*100/epoch?.epoch_end).toFixed(2)}%` }}></span>
+              </div>
             </div>
             <div className="text-[16px] font-medium">
-              {Number(epoch_number).toLocaleString()} <span className="text-[#1c96e4] float-right">0.01%</span>
+              {Number(epoch?.epoch_number).toLocaleString()} <span className="text-[#1c96e4] float-right">{Number(lastestBlockHeight*100/epoch?.epoch_end).toFixed(2)}%</span>
             </div>
             <div className="bg-[#1a1a1a] rounded-lg w-full h-[150px] mt-3 box-border p-4 pt-4">
               <div className="text-[14px] text-[#999999]">
                 Slot Range
               </div>
               <div className="text-[14px] text-[#fff]">
-                {epoch_start} - {epoch_end}
+                {epoch?.epoch_start} - {epoch?.epoch_end}
               </div>
               <div className="border-t-2 border-t-[#666] mt-4 mb-4"></div>
               <div className="text-[14px] text-[#999999]">
                 Time Remaining
               </div>
               <div className="text-[14px] text-[#fff]">
-                0d 23h 59m 59s
+                {format((epoch?.time_remaining))}
               </div>
             </div>
         </div>
@@ -172,7 +177,7 @@ export default function Home() {
                   Slot Height
                 </div>
                 <div className="text-[14px] text-[#fff]">
-                  {epoch_number}
+                  {epoch?.epoch_number}
                 </div>
               </div>
 
