@@ -15,6 +15,7 @@ export default async function AccountPage({ params }) {
 
     let EpochNumber = 0
     let Reward = 0
+    let ch = block.Header.Blockheight
      if (block.Header.Blockheight < 259200) {
 		 EpochNumber = 1
 		
