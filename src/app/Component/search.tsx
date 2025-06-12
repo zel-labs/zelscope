@@ -10,7 +10,7 @@ export default function SearchComponent() {
   
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      alert('Entered value: ' + value);
+      handleSubmit()
       // or handle value with a function here
     }
   };

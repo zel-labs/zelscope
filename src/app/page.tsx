@@ -27,39 +27,54 @@ export default function Home() {
  const [txs, setTxs] = useState(null);
    
   useEffect(() => {
-     setInterval(()=>{
-      fetch('/api/currentstatus/') 
-      .then(res =>res.json())
-      .then(json => {
+     function loadStatus(){
+      setTimeout(()=>{fetch('/api/currentstatus/') 
+        .then(res =>res.json())
+        .then(json => {
+          
+          setSupply(json.data.totalSupply);
+          setCSupply(json.data.totalCirculating);
+          setNonSupply(json.data.totalStaked	);
+          setTotalTx(json.data.totalTransactions);
+          setLastestBlockHeight(json.data.lastestBlockHeight);
+          setEpoch(json.data.epoch);
         
-        setSupply(json.data.totalSupply);
-        setCSupply(json.data.totalCirculating);
-        setNonSupply(json.data.totalStaked	);
-        setTotalTx(json.data.totalTransactions);
-        setLastestBlockHeight(json.data.lastestBlockHeight);
-        setEpoch(json.data.epoch);
+          //alert(json.totalSupply)
+          
+        }).then(
+          
+          loadStatus
+        )
+      },1000)
        
-        //alert(json.totalSupply)
-        
-      })
-      const el = document.getElementById('epochsize')
-    if (el) {
-      el.style.width = "10px"
       
-    }
-      fetch('/api/latestblocks').then(res=>res.json())
-      .then(json => {
-        
-        setBlocks(json.data)
-        
-      })
-      fetch('/api/latesttxs').then(res=>res.json())
-      .then(json =>{
-        
-        setTxs(json.data)
-      })
-     },1000)
-     
+     }
+     function loadBlocks(){
+      setTimeout(()=>{
+        fetch('/api/latestblocks').then(res=>res.json())
+        .then(json => {
+          
+          setBlocks(json.data)
+          
+        }).then(loadBlocks)
+      },1000)
+     }
+
+     function loadTransactions(){
+      setTimeout(()=>{
+        fetch('/api/latesttxs').then(res=>res.json())
+        .then(json =>{
+          
+          setTxs(json.data)
+        }).then(loadTransactions)
+      },1000)
+     }
+     /* 
+      
+     },1000)*/
+     loadStatus()
+     loadBlocks()
+     loadTransactions()
   }, [])
   return (
     <>
