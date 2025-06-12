@@ -4,12 +4,16 @@ import SearchComponent from '../../Component/search'
 import { format } from 'timeago.js';
 import FooterComponent from "../../Component/footer";
 import Link from 'next/link';
+import Custom404 from '@/app/not-found';
 
 export default async function AccountPage({ params }) {
     
     const slug = params.slug;
     //get account balance
     const res = await fetch('http://localhost:4000/api/account/'+slug, { cache: 'no-store' });
+    if (!res.ok) {
+        return <Custom404/>
+    }
     let data = await res.json();
     const account = await data.data
     const txRes = await fetch('http://localhost:4000/api/accountTxList/'+slug, { cache: 'no-store' });

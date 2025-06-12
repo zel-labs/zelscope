@@ -3,6 +3,7 @@ import SearchComponent from '../../Component/search'
 import { format } from 'timeago.js';
 import Link from 'next/link';
 import FooterComponent from "../../Component/footer";
+import Custom404 from '@/app/not-found';
 export default async function AccountPage({ params }) {
     
     const slug = params.slug;
@@ -10,6 +11,9 @@ export default async function AccountPage({ params }) {
     
 
     const res = await fetch('http://localhost:4000/api/blockByHash/'+slug, { cache: 'no-store' });
+    if (!res.ok) {
+            return <Custom404/>
+        }
     const data = await res.json();
     const block = data.data
 
