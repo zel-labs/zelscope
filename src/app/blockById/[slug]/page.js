@@ -34,16 +34,16 @@ export default async function AccountPage({ params }) {
         <>
         
         <HeaderComponent/>
-        <div className='m-auto max-w-[1450px]'>
-            <div className='grid grid-cols-2 mt-3'>
+        <div className='m-auto max-w-[1450px] p-3'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 mt-3'>
                 <div>
                     <div className='text-[18px] font-semibold'>Block</div>
-                    <div className='font-medium text-[#999] mt-2 text-[14px]'>{slug}</div>
+                    <div className='font-medium text-[#999] mt-2 text-[14px] overflow-ellipsis'>{slug}</div>
                 </div>
                 
                 <SearchComponent/>
             </div>
-            <div className='w-full p-4 bg-[#282828] rounded-lg mt-4 grid grid-cols-4 text-[13px] gap-y-5'>
+            <div className='w-full p-4 bg-[#282828] rounded-lg mt-4 grid grid-cols-4 text-[13px] gap-y-5 overflow-x-auto'>
                 <div className='col-span-4 font-semibold'>Overview</div>
                 <div className='text-[#999]'>Block</div>
                 <div className='col-span-3  '><Link href={"/blockById/"+(block.Header.Blockheight)} className="text-[#1e8de0]">{formatPlainNumber(block.Header.Blockheight)}</Link></div>
@@ -66,9 +66,9 @@ export default async function AccountPage({ params }) {
                 
             </div>
             
-            <div className='w-full p-4 bg-[#282828] rounded-lg mt-4 mb-20'>
-                <div className='font-semibold '>Transactions</div>
-                <div className='grid grid-cols-8 text-[12px] border-b-[1px] border-b-[#666] pb-3 pt-3'>
+            <div className='w-full p-4 bg-[#282828] rounded-lg mt-4 mb-20 overflow-x-auto '>
+                <div className='font-semibold min-w-[600px]'>Transactions</div>
+                <div className='grid grid-cols-8 text-[12px] border-b-[1px] border-b-[#666] pb-3 pt-3 min-w-[600px]'>
                     <div className='col-span-2'>Signature</div>
                     <div>Time</div>
                     <div>Action</div>
@@ -78,7 +78,7 @@ export default async function AccountPage({ params }) {
                     <div>Fee</div>
                 </div>
                 {block.Transactions?.map((tx,i)=>(
-                    <div className='grid grid-cols-8 text-[12px] border-b-[1px] border-b-[#666] pb-3 pt-3' key={i}>
+                    <div className='grid grid-cols-8 text-[12px] border-b-[1px] border-b-[#666] pb-3 pt-3 min-w-[600px]' key={i}>
                         <div className='col-span-2 text-ellipsis overflow-hidden pr-20'><Link href={"/tx/"+tx.txhash} className="text-[#1e8de0]">{tx.sighash}</Link></div>
                         <div>{format(block.Header.Blocktime)}</div>
                         <div><span className='p-1 pr-3 pl-3 rounded-lg border-[1px] border-[#1e8de0] text-[#1e8de0] '>{filterAction(tx.txtype)}</span></div>

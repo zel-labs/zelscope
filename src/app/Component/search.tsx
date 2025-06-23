@@ -33,7 +33,7 @@ export default function SearchComponent() {
     })
   }
   return (
-    <div className="w-[500px] text-2xl font-medium pr-4 justify-self-end">
+    <div className="max-w-[500px] text-2xl font-medium pr-4 justify-self-end">
         <div className="bg-[#333] w-full rounded-lg pl-4 h-[40px] box-border relative mt-2">
             <input type="text" placeholder="Search transactions, blocks and wallets" className="text-[14px] w-[90%] outline-0 text-white" 
             value={value} onChange={(e) => setValue(e.target.value)} onKeyDown={handleKeyDown} />

@@ -20,16 +20,16 @@ export default async function AccountPage({ params }) {
         <>
         
         <HeaderComponent/>
-        <div className='m-auto max-w-[1450px] mb-20'>
-            <div className='grid grid-cols-2 mt-3'>
+        <div className='m-auto max-w-[1450px] mb-20 overflow-hidden box-border'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 mt-3 p-3'>
                 <div>
                     <div className='text-[18px] font-semibold'>Transaction</div>
-                    <div className='font-medium text-[#999] mt-2 text-[14px]'>{slug}</div>
+                    <div className='font-medium text-[#999] mt-2 text-[14px] overflow-ellipsis'>{slug}</div>
                 </div>
                 
                 <SearchComponent/>
             </div>
-            <div className='w-full p-4 bg-[#282828] rounded-lg mt-4 grid grid-cols-4 text-[13px] gap-y-5'>
+            <div className='w-full p-4 bg-[#282828] rounded-lg mt-4 grid grid-cols-4 text-[13px] gap-y-5 overflow-x-auto'>
                 <div className='col-span-4 font-semibold'>Overview</div>
                 <div className='text-[#999]'>Signature</div>
                 <div className='col-span-3 overflow-ellipsis overflow-hidden '>{tx.sighash}</div>

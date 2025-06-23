@@ -79,8 +79,8 @@ export default function Home() {
   return (
     <>
     <div className="bg-[#1a1a1a] h-full pb-20">
-      <div className="bg-linear-to-r from-[#1ec7f6] to-[#4570c5] w-full h-[236px] pt-3 text-white">
-        <div className="m-auto max-w-[1450px] grid grid-cols-2">
+      <div className="bg-linear-to-r from-[#1ec7f6] to-[#4570c5] w-full min-h-[236px] pt-3 text-white pl-3">
+        <div className="m-auto max-w-[1450px] grid grid-cols-1 sm:grid-cols-2">
           <div className="w-full ">
             <Link href="/"><Image src="/img/logo.png" width={165} height={45} alt="Zelscope" className="float-left" /></Link>
             <div className="float-left bg-[rgba(255,255,255,0.3)] rounded-lg ml-5 h-[35px] pt-0.5 pl-2 mt-3 w-[250px]">
@@ -119,16 +119,16 @@ export default function Home() {
           
         </div>
       </div>
-      <div className="m-auto max-w-[1450px] grid grid-cols-4 ">
-        <div className="bg-[#282828] h-[40px] col-span-4 rounded-lg mt-3"></div>
-        <div className="bg-[#282828] h-[260px] rounded-lg mt-3 mr-2 p-4 ">
+      <div className="m-auto max-w-[1450px] grid  grid-cols-1 gap-2.5  p-2 sm:grid-cols-4 ">
+        <div className="bg-[#282828] h-[40px] col-span-1 rounded-lg mt-3 sm:col-span-4"></div>
+        <div className="bg-[#282828] h-[290px] rounded-lg mt-3  p-4 ">
             <div className="text-[14px] mb-2">
               Zel Supply
             </div>
             <div className="text-[16px] font-medium">
               {Number(supply).toFixed(2)}
             </div>
-            <div className="bg-[#1a1a1a] rounded-lg w-full h-[150px] mt-3 box-border p-4 pt-4">
+            <div className="bg-[#1a1a1a] rounded-lg w-full h-[180px] mt-3 box-border p-4 pt-4">
               <div className="text-[14px] text-[#999999]">
                 Circulating Supply
               </div>
@@ -144,7 +144,7 @@ export default function Home() {
               </div>
             </div>
         </div>
-        <div className="bg-[#282828] h-[260px] rounded-lg mt-3 mr-2 ml-2 p-4 ">
+        <div className="bg-[#282828] h-[290px] rounded-lg mt-3  p-4 ">
             <div className="text-[14px] mb-2">
               Current Epoch 
               <div className="float-right w-[100px] bg-[#555555] h-[8px] mt-2">
@@ -154,7 +154,7 @@ export default function Home() {
             <div className="text-[16px] font-medium">
               {Number(epoch?.epoch_number).toLocaleString()} <span className="text-[#1c96e4] float-right">{Number(lastestBlockHeight*100/epoch?.epoch_end).toFixed(2)}%</span>
             </div>
-            <div className="bg-[#1a1a1a] rounded-lg w-full h-[150px] mt-3 box-border p-4 pt-4">
+            <div className="bg-[#1a1a1a] rounded-lg w-full h-[180px] mt-3 box-border p-4 pt-4">
               <div className="text-[14px] text-[#999999]">
                 Slot Range
               </div>
@@ -170,14 +170,14 @@ export default function Home() {
               </div>
             </div>
         </div>
-        <div className="bg-[#282828] h-[260px] rounded-lg mt-3 mr-2 ml-2 p-4 ">
+        <div className="bg-[#282828] h-[290px] rounded-lg mt-3 p-4 ">
             <div className="text-[14px] mb-2">
               Network (Transaction) 
             </div>
             <div className="text-[16px] font-medium">
               {Number(totalTx).toLocaleString()}
             </div>
-            <div className="bg-[#1a1a1a] rounded-lg w-full h-[150px] mt-3 box-border p-4 pt-4 grid grid-cols-2">
+            <div className="bg-[#1a1a1a] rounded-lg w-full h-[180px] mt-3 box-border p-4 pt-4 grid grid-cols-2">
               
               <div>
                 <div className="text-[14px] text-[#999999]">
@@ -216,14 +216,14 @@ export default function Home() {
               </div>
             </div>
         </div>
-        <div className="bg-[#282828] h-[260px] rounded-lg mt-3 ml-2 p-4 ">
+        <div className="bg-[#282828] h-[290px] rounded-lg mt-3  p-4 ">
           <div className="text-[14px] mb-2">
               Total Stake (Zel) 
           </div>
           <div className="text-[16px] font-medium">
               {Number(nonsupply).toLocaleString()}
           </div>
-          <div className="bg-[#1a1a1a] rounded-lg w-full h-[150px] mt-3 box-border p-4 pt-4">
+          <div className="bg-[#1a1a1a] rounded-lg w-full h-[180px] mt-3 box-border p-4 pt-4">
               <div className="text-[14px] text-[#999999]">
                 Current Stake
               </div>
@@ -239,7 +239,7 @@ export default function Home() {
               </div>
             </div>
         </div>
-        <div className="bg-[#282828] col-span-2 min-h-90 mt-3 rounded-lg mr-2 pt-4 text-[12px] pb-10">
+        <div className="bg-[#282828]  min-h-90 mt-3 rounded-lg  pt-4 text-[12px] pb-10 md:col-span-2">
           <div className="text-[14px] pl-3 mb-3">
             Latest Blocks
           </div>
@@ -263,7 +263,7 @@ export default function Home() {
           
           
         </div>
-        <div className="bg-[#282828] col-span-2 min-h-90 mt-3 rounded-lg  pt-4 text-[12px] ml-2 pb-10">
+        <div className="bg-[#282828]  min-h-90 mt-3 rounded-lg  pt-4 text-[12px]  pb-10 md:col-span-2">
           <div className="text-[14px] pl-3 mb-3">
             Latest Transaction
           </div>
