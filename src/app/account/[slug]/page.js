@@ -32,7 +32,7 @@ export default async function AccountPage({ params }) {
                     <div className='font-medium text-[#999] mt-2 text-[14px]'>{slug}</div>
                 </div>
                 
-                <SearchComponent/>
+                <SearchComponent className='bg-[#131313]'/>
             </div>
             <div className='grid grid-cols-3 mt-4'>
                 <div className='bg-[#282828] h-[222px] rounded-lg mr-2 p-4'>

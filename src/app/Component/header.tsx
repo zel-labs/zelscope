@@ -2,6 +2,7 @@ import React from 'react'
 import Image from "next/image";
 import '../styles/style.css';
 import Link from 'next/link';
+import NavComponent from './nav';
 export default function HeaderComponent() {
   return (
     <div className="bg-linear-to-r from-[#1ec7f6] to-[#4570c5] w-full min-h-[74px] pt-3 text-white pb-2">
@@ -14,24 +15,7 @@ export default function HeaderComponent() {
                 </div>
             
             </div>
-            <div className="mt-1 justify-self-end">
-                <ul>
-                
-                <li className="float-left pr-5 pl-5 mt-2">
-                    Leaderboard  <span className="float-right text-[10px] bg-amber-600 pt-1 pb-1 pl-2 pr-2 border-amber-900 rounded-lg ml-2">Coming Soon</span>      
-                </li>
-                <li className="float-left pr-5 pl-5 mt-2">
-                    Blockchain          
-                </li>
-                <li className="float-left pr-5 pl-5 mt-2">
-                    Resources <span className="float-right text-[10px] bg-amber-600 pt-1 pb-1 pl-2 pr-2 border-amber-900 rounded-lg ml-2">Coming Soon</span>
-                </li>
-                <li className="float-left pr-5 pl-5">
-                    <Image src="/img/zel-black.png" width={34} height={37} alt="Zelonis Blockchain" />
-                </li>
-                
-                </ul>
-            </div>
+            <NavComponent/>
             
             
         </div>

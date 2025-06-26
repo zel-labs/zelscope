@@ -8,6 +8,7 @@ import Link from 'next/link';
 import FooterComponent from "./Component/footer";
 import SearchComponent from "./Component/search";
 import { CSSProperties } from "react";
+import NavComponent from "./Component/nav";
 
 export default function Home() {
      const [inputValue, setInputValue] = useState('');
@@ -89,24 +90,7 @@ export default function Home() {
             </div>
             
           </div>
-          <div className=" mt-1">
-              <ul>
-                
-                <li className="float-left pr-5 pl-5 mt-2">
-                  Leaderboard  <span className="float-right text-[10px] bg-amber-600 pt-1 pb-1 pl-2 pr-2 border-amber-900 rounded-lg ml-2">Coming Soon</span>      
-                </li>
-                <li className="float-left pr-5 pl-5 mt-2">
-                  Blockchain          
-                </li>
-                <li className="float-left pr-5 pl-5 mt-2">
-                  Resources <span className="float-right text-[10px] bg-amber-600 pt-1 pb-1 pl-2 pr-2 border-amber-900 rounded-lg ml-2">Coming Soon</span>
-                </li>
-                <li className="float-left pr-5 pl-5">
-                  <Image src="/img/zel-black.png" width={34} height={37} alt="Zelonis Blockchain" />
-                </li>
-                
-              </ul>
-          </div>
+          <NavComponent/>
           <div className="w-full text-2xl font-medium col-end-2 mt-10">
             <div className="w-full">
               Explore Zelonis Blockchain
